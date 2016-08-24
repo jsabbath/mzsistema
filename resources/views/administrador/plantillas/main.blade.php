@@ -13,15 +13,18 @@
 <nav>
     <div class="nav-wrapper grey darken-4 row" >
     <p class="col s1"></p>
-    <a href="http://www.lmzabogados.com">
+    <a href="http://www.meythaleryzambra.bplaced.net">
       <img src="https://lmzabogados-my.sharepoint.com/personal/sistemas_lmzabogados_com/_layouts/15/guestaccess.aspx?guestaccesstoken=5VmWgfZ%2fRW1cOKPkihv6H6wwx4rUR9Ul6qc7DDXhXQ8%3d&docid=125e8d5ebf1884d0e8e37c01092d35615&rev=1" height=60>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
     </a>
+        <li><a href="{{ route('log.create') }}">Logout</a></li>
+        @if(Auth::user()->admin())
         <li><a href="{{ route('administrador.departamentos.index') }}">Departamento</a></li>
         <li><a href="{{ route('administrador.users.index') }}">Abogados</a></li>
         <li><a href="{{ route('administrador.clientes.index') }}">Clientes</a></li>
         <li><a href="{{ route('administrador.casos.index') }}">Casos</a></li>
-        <li><a href="#">Facturacion</a></li>
+        @endif
+        <li><a href="{{ route('administrador.facturas.create') }}">Facturacion</a></li>
       </ul>
     </div>
   </nav>

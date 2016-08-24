@@ -54,6 +54,7 @@ class usersController extends Controller
         }else{
             $User->nivel = 'miembro';
         }
+        $User->password = bcrypt($User->password);
         $User->save();
         Session::flash('save',$User->name.' se ha creado con exito');
         return redirect()->route('administrador.users.index');
@@ -90,7 +91,7 @@ class usersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(userRequest $request, $id)
     {
         if ($request->estado == 'on') {
             $request->estado = 'activo';
@@ -102,6 +103,7 @@ class usersController extends Controller
         }else{
             $request->nivel = 'miembro';
         }
+        $request->password = bcrypt($request->password);
         $User = User::find($id);
         $User->name= $request->name;
         $User->email= $request->email;

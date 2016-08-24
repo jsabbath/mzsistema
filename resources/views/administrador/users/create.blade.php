@@ -6,27 +6,27 @@
     {!! Form::open(['route'=>'administrador.users.store', 'method' => 'POST', 'class' => 'col s12']) !!}
   <div class="row">
       <div class="input-field col s6">
-          <input name="name" id="name" type="text">
+          <input name="name" id="name" type="text" value="{{ old('name') }}">
           <label for="name">Nombre</label>
       </div>
       <div class="input-field col s6">
-          <input id="apellido" name="apellido" type="text">
+          <input id="apellido" name="apellido" type="text" value="{{ old('apellido') }}">
           <label for="apellido">Apellido</label>
       </div>
     </div>
     <div class="row">
         <div class="input-field col s6">
-          <input name="password1" type="password" id="password1">
+          <input name="password1" type="password" id="password" >
             <label for="password1">Contraseña</label>
       </div>
         <div class="input-field col s6">
-            <input name="password" type="password" id="password">
+            <input name="password" type="password" id="password1">
             <label for="password">Contraseña</label>
         </div>
     </div>
     <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate" name="email">
+          <input id="email" type="email" class="validate" name="email" value="{{ old('email') }}">
           <label for="email">Email</label>
         </div>
     </div>

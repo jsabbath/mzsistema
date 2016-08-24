@@ -14,12 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' =>'administrador'], function(){
+Route::group(['prefix' =>'administrador', 'middleware' => 'auth'], function(){
+	Route::resource('facturas','facturasController');
+	
+	Route::group(['middleware' => 'admin'], function(){
 	Route::resource('departamentos','departamentosController');
 	Route::resource('users','usersController');
 	Route::resource('clientes','clientesController');
 	Route::resource('casos','casosController');
-	Route::resource('facturas','facturasController');
+	
 #Rutas creadas para eliminar
 	Route::get('departamentos/{id}/destroy', [
 		'uses' => 'departamentosController@destroy',
@@ -37,4 +40,7 @@ Route::group(['prefix' =>'administrador'], function(){
 		'uses' => 'casosController@destroy',
 		'as'   => 'administrador.casos.destroy'
 	]);
-});
+});});
+#Ruta del autentificador
+	Route::resource('log', 'logController');
+	Route::get('logout', 'logController@logout');
